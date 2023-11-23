@@ -33,11 +33,11 @@ class SearchBar extends Component {
                             <Form.Group as={Col} md='3' controlId="categoryFilter">
                                 <Form.Control as='select' name='categoryFilter' value={this.state.categoryFilter} onChange={this.handleCategoryChange}>
                                     <option value='default' >Filter by category</option>
-                                    <option value='Design' >Design</option>
-                                    <option value='Development' >Development</option>
-                                    <option value='Marketing' >Marketing</option>
-                                    <option value='Music' >Music</option>
-                                    <option value='Other' >Other</option>
+                                    <option value='English' >English</option>
+                                    <option value='Hindi' >Hindi</option>
+                                    <option value='French' >French</option>
+                                    <option value='German' >German</option>
+                                    <option value='Spanish' >Spanish</option>
                                 </Form.Control>
                             </Form.Group>
 

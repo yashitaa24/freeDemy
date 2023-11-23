@@ -9,7 +9,7 @@ export default class CommentsService {
 
     constructor() {
         this.apiHandler = axios.create({
-            baseURL: REACT_APP_API_URL,
+            baseURL: REACT_APP_API_URL+'/comments',
             withCredentials: true
         })
     }

@@ -50,7 +50,7 @@ router.post('/newCourse', isLoggedIn, isTeacher,
         
         check('requirements').isLength({ min: 5 }).withMessage('Include some requirements'),
 
-        check('category').isIn([ 'Design', 'Development', 'Marketing', 'Music', 'Other' ]).withMessage('You must choose a category'),
+        check('category').isIn([ 'English', 'Hindi', 'French', 'German', 'Spanish','Other' ]).withMessage('You must choose a category'),
 
         check('difficultyLevel').isIn([ 'Beginner', 'Intermidiate', 'Advanced', 'All levels' ]).withMessage('You must choose a level'),
 

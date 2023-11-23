@@ -99,6 +99,7 @@ class CourseDetails extends Component {
                                             :
                                             <Button onClick={this.toggleInput} disabled className="mt-3 mb-3 start-course" >Log In to see media</Button>
                                         }
+                                        
 
                                         {/* Videos */}
                                         {this.state.showInput &&

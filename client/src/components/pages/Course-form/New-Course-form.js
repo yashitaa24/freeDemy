@@ -93,11 +93,11 @@ class NewCourseForm extends Component {
                                             <Form.Label>Category</Form.Label>
                                             <Form.Control as='select' name='category' value={this.state.category} onChange={this.handleInputChange}>
                                                 <option>Choose one option</option>
-                                                <option value='Design' >Design</option>
-                                                <option value='Development' >Development</option>
-                                                <option value='Marketing' >Marketing</option>
-                                                <option value='Music' >Music</option>
-                                                <option value='Other' >Other</option>
+                                                <option value='English' >English</option>
+                                                <option value='Hindi' >Hindi</option>
+                                                <option value='French' >French</option>
+                                                <option value='Spanish' >Spanish</option>
+                                                <option value='German' >German</option>
                                             </Form.Control>
                                         </Form.Group>
                                     </Col>

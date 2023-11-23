@@ -15,7 +15,7 @@ const courseSchema = new Schema({
     lead: String,
     category: {
         type: String,
-        enum: ['Design', 'Development', 'Marketing', 'Music', 'Other'],
+        enum: ['English', 'Hindi', 'French', 'German', 'Spanish'],
         default: 'Other'
     },
     difficultyLevel: {
