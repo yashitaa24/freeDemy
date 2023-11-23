@@ -53,7 +53,15 @@ class CourseDetails extends Component {
             })
     }
 
-    toggleInput = () => this.setState({ showInput: !this.state.showInput })
+    // toggleInput = () => this.setState({ showInput: !this.state.showInput })
+    toggleInputMedia = () => {
+        this.setState((prevState) => ({ showMedia: !prevState.showMedia }));
+      };
+      
+      toggleInputQuestions = () => {
+        this.setState((prevState) => ({ showQuestions: !prevState.showQuestions }));
+      };
+      
 
     setVideoUrl = url => this.setState({ videoUrl: url })
     setMaterial = mrl => this.setState({ material: mrl })
@@ -96,45 +104,71 @@ class CourseDetails extends Component {
                                         <ul className="requirements mb-4">
                                             {this.state.course.requirements.map((elm, idx) => <li key={idx}><img src="https://res.cloudinary.com/dodneiokm/image/upload/v1607887317/project3-ironhack/double-check_tm7qmy.png" alt='Double-Checked icon' /><p>{elm}</p></li>)}
                                         </ul>
+                                        {this.props.loggedUser ? (
+  <Button onClick={this.toggleInputMedia} className="mt-3 mb-3 start-course">
+    {this.state.showMedia ? 'Close media' : 'See course media'}
+  </Button>
+) : (
+  <Button onClick={this.toggleInputMedia} disabled className="mt-3 mb-3 start-course">
+    Log In to see media
+  </Button>
+)}
 
-                                        {this.props.loggedUser ?
-                                            <Button onClick={this.toggleInput} className="mt-3 mb-3 start-course" >{this.state.showInput ? 'Close media' : 'See course media'}</Button>
-                                            :
-                                            <Button onClick={this.toggleInput} disabled className="mt-3 mb-3 start-course" >Log In to see media</Button>
-                                        }
-                                        
+{/* Videos */}
+{this.state.showMedia && (
+  <motion.div transition={{ type: 'spring', stiffness: 300, duration: 1.2 }}>
+    <Row>
+      <Col md={12} lg={8}>
+        <ReactPlayer
+          width='100%'
+          url={this.state.videoUrl}
+          controls
+        />
+      </Col>
 
-                                        {/* Videos */}
-                                        {this.state.showInput &&
-                                            <motion.div transition={{ type: 'spring', stiffness: 300, duration: 1.2 }}>
-                                                <Row>
-                                                    <Col md={12} lg={8}>
-                                                        <ReactPlayer
-                                                            width='100%'
-                                                            url={this.state.videoUrl}
-                                                            controls
-                                                        />
-                                                    </Col>
+      <Col md={12} lg={4}>
+        {this.state.course.videos.map((elm, idx) => (
+          <Card.Header className="video-card" key={elm._id}>
+            <img
+              src="https://res.cloudinary.com/dodneiokm/image/upload/v1607893554/project3-ironhack/play_u6mma0.png"
+              alt="play icon"
+              onClick={() => this.setVideoUrl(elm)}
+            />
+            <p style={{ display: 'inline-flex' }}>Lesson {idx + 1}</p>
+          </Card.Header>
+        ))}
+      </Col>
+    </Row>
+  </motion.div>
+)} <br />
 
-                                                    <Col md={12} lg={4}>
-                                                        {this.state.course.videos.map((elm, idx) =>
-                                                            <Card.Header className="video-card" key={elm._id}>
-                                                                <img
-                                                                    src="https://res.cloudinary.com/dodneiokm/image/upload/v1607893554/project3-ironhack/play_u6mma0.png"
-                                                                    alt="play icon"
-                                                                    onClick={() => this.setVideoUrl(elm)}
-                                                                />
-                                                                <p style={{ display: 'inline-flex' }} >Lesson {idx + 1}</p>
-                                                            </Card.Header>
-                                                        )}
-                                                    </Col>
-                                                </Row>
-                                            </motion.div>}
-                                        <h3 className="mt-4 mb-4">Materials:</h3>
-                                        <ul className="requirements mb-4">
-                                            {this.state.course.material.map((elm, idx) => <li key={idx}><img src="https://th.bing.com/th/id/R.a9557c91c2dd70bcac67938e0b384a2c?rik=cgi1jVIfUHfaOQ&riu=http%3a%2f%2fcliparts.co%2fcliparts%2f8iG%2fb5X%2f8iGb5XKbT.jpg&ehk=n7KZax1HQ%2by8bMtkU8XpmtpDOzR8ZBjsKScHEAWFC2M%3d&risl=&pid=ImgRaw&r=0" alt='Double-Checked icon' /><p>{elm}</p></li>)}
-                                        </ul>
-                                                                            
+{this.props.loggedUser ? (
+  <Button onClick={this.toggleInputQuestions} className="mt-3 mb-3 start-course">
+    {this.state.showQuestions ? 'Close questions' : 'See questions'}
+  </Button>
+) : (
+  <Button onClick={this.toggleInputQuestions} disabled className="mt-3 mb-3 start-course">
+    Log In to see questions
+  </Button>
+)}
+
+{/* Questions */}
+{this.state.showQuestions && (
+  <div>
+    <h3 className="mt-4 mb-4">Questions:</h3>
+    <ul className="requirements mb-4">
+      {this.state.course.material.map((elm, idx) => (
+        <li key={idx}>
+          <img src="https://th.bing.com/th/id/R.a9557c91c2dd70bcac67938e0b384a2c?rik=cgi1jVIfUHfaOQ&riu=http%3a%2f%2fcliparts.co%2fcliparts%2f8iG%2fb5X%2f8iGb5XKbT.jpg&ehk=n7KZax1HQ%2by8bMtkU8XpmtpDOzR8ZBjsKScHEAWFC2M%3d&risl=&pid=ImgRaw&r=0" alt='Double-Checked icon' />
+          <p>{elm.split('?')[0] + " ?"}<br />{elm.split('?')[1]}</p>
+        </li>
+      ))}
+    </ul>
+  </div>
+)}
+
+
+
                                     </Col>
                                 </Row>
                             </section>
