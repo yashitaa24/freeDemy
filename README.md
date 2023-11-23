@@ -1,11 +1,3 @@
-![logo_ironhack_blue 7](https://user-images.githubusercontent.com/23629340/40541063-a07a0a8a-601a-11e8-91b5-2f13e4e6b441.png)
-
-# Freedemy
-
-Ironhack Web Development Bootcamp 9th week project: MERN Stack SPA e-learning platform.
-This is an E-learning Web App was bootstrapped with Create React App and other libraries. The UI framework used was React-Bootstrap.
-
-
 ## Here's the route we will be using:
 
 
