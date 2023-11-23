@@ -47,6 +47,10 @@ const courseSchema = new Schema({
         type: [String],
         default: 'https://www.youtube.com/watch?v=I_jSd4Wf7ck'
     },
+    material:{
+        type: [String],
+        default: "None"
+    },
     owner: {
         type: Schema.Types.ObjectId,
         ref: 'Teacher'

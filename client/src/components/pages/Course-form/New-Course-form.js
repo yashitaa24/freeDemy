@@ -23,6 +23,7 @@ class NewCourseForm extends Component {
                 price: '',
                 duration: '',
                 requirements: [],
+                material:[],
                 imageUrl: this.props.teacherInfo.imageUrl || '',
                 owner: this.props.teacherInfo._id || ''
             },
@@ -143,6 +144,12 @@ class NewCourseForm extends Component {
                                     <Form.Label>Videos</Form.Label>
                                     <Form.Control as='textarea' name="videos" value={this.state.videos} onChange={this.handleInputChange} placeholder='Include here the URLs of your content (audio or video)' />
                                     <Form.Text id='videos' muted>Separate URLs with commas</Form.Text>
+                                </Form.Group>
+
+                                <Form.Group controlId="materials">
+                                    <Form.Label>Materials</Form.Label>
+                                    <Form.Control as='textarea' name="materials" value={this.state.materials} onChange={this.handleInputChange} placeholder='Few Question and Answers to Solve' />
+                                    <Form.Text id='materials' muted>Separate materials with commas</Form.Text>
                                 </Form.Group>
 
                                 <Form.Group>

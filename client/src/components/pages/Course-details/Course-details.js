@@ -18,7 +18,8 @@ class CourseDetails extends Component {
             course: undefined,
             comments: undefined,
             videoUrl: undefined,
-            showModal: false
+            showModal: false,
+            material: undefined
         }
         this.coursesService = new CoursesService()
         this.commentsService = new CommentsService()
@@ -32,7 +33,7 @@ class CourseDetails extends Component {
         const getComments = this.commentsService.getCourseComments(course_id)
 
         Promise.all([getCourse, getComments])
-            .then(res => this.setState({ course: res[0].data, videoUrl: res[0].data.videos[0], comments: res[1].data }))
+            .then(res => this.setState({ course: res[0].data, videoUrl: res[0].data.videos[0], comments: res[1].data, material: res[0].data.material[0] }))
             .catch(() => {
                 this.props.history.push('/courses')
                 this.props.handleToast(true, 'An error has occurred, please try again later', '#f8d7da')
@@ -55,6 +56,8 @@ class CourseDetails extends Component {
     toggleInput = () => this.setState({ showInput: !this.state.showInput })
 
     setVideoUrl = url => this.setState({ videoUrl: url })
+    setMaterial = mrl => this.setState({ material: mrl })
+
 
     render() {
         return (
@@ -127,7 +130,11 @@ class CourseDetails extends Component {
                                                     </Col>
                                                 </Row>
                                             </motion.div>}
-
+                                        <h3 className="mt-4 mb-4">Materials:</h3>
+                                        <ul className="requirements mb-4">
+                                            {this.state.course.material.map((elm, idx) => <li key={idx}><img src="https://th.bing.com/th/id/R.a9557c91c2dd70bcac67938e0b384a2c?rik=cgi1jVIfUHfaOQ&riu=http%3a%2f%2fcliparts.co%2fcliparts%2f8iG%2fb5X%2f8iGb5XKbT.jpg&ehk=n7KZax1HQ%2by8bMtkU8XpmtpDOzR8ZBjsKScHEAWFC2M%3d&risl=&pid=ImgRaw&r=0" alt='Double-Checked icon' /><p>{elm}</p></li>)}
+                                        </ul>
+                                                                            
                                     </Col>
                                 </Row>
                             </section>

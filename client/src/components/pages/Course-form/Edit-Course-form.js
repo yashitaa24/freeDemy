@@ -22,6 +22,7 @@ class EditCourseForm extends Component {
                 duration: '',
                 requirements: [],
                 videos: [],
+                material:[],
                 imageUrl: '',
                 owner: this.props.teacherInfo ? this.props.teacherInfo._id : ''
             },
@@ -158,6 +159,12 @@ class EditCourseForm extends Component {
                                     <Form.Label>Videos</Form.Label>
                                     <Form.Control as='textarea' name="videos" value={this.state.course.videos} onChange={this.handleInputChange} />
                                     <Form.Text id='videos' muted>Separate URLs with commas</Form.Text>
+                                </Form.Group>
+
+                                <Form.Group controlId="requirements">
+                                    <Form.Label>Materials</Form.Label>
+                                    <Form.Control as='textarea' name="material" value={this.state.course.material} onChange={this.handleInputChange} />
+                                    <Form.Text id='material' muted>Separate materials with commas</Form.Text>
                                 </Form.Group>
 
                                 <Form.Group>
