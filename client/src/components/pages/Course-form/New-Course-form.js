@@ -148,7 +148,7 @@ class NewCourseForm extends Component {
 
                                 <Form.Group controlId="materials">
                                     <Form.Label>Materials</Form.Label>
-                                    <Form.Control as='textarea' name="materials" value={this.state.materials} onChange={this.handleInputChange} placeholder='Few Question and Answers to Solve' />
+                                    <Form.Control as='textarea' name="materials" value={this.state.material} onChange={this.handleInputChange} placeholder='Few Question and Answers to Solve' />
                                     <Form.Text id='materials' muted>Separate materials with commas</Form.Text>
                                 </Form.Group>
 

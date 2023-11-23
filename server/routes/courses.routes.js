@@ -63,13 +63,13 @@ router.post('/newCourse', isLoggedIn, isTeacher,
         res.status(400).json({ message: passCheck.errors })
         return
     }
-        
-    const { imageUrl, title, lead, category, difficultyLevel, description, whatYouWillLearn, price, duration, requirements, videos, owner, material } = req.body
+        console.log(req.body)
+    const { imageUrl, title, lead, category, difficultyLevel, description, whatYouWillLearn, price, duration, requirements, videos, owner, materials } = req.body
     
     const mainTopicsArr = whatYouWillLearn.split(',').map(elm => elm.charAt(0).toUpperCase() + elm.substring(1))
     const requirementsArr = requirements.split(',').map(elm => elm.charAt(0).toUpperCase() + elm.substring(1))
     const videosArr = videos.split(',')
-    const materialArr = material.split(",")
+    const materialArr = materials.split(",")
 
     Course
         .create({
@@ -92,6 +92,7 @@ router.post('/newCourse', isLoggedIn, isTeacher,
 })
 
 router.put('/editCourse/:id', isLoggedIn, isTeacher, isValidId, (req, res) => {
+    console.log(req.body)
     const { imageUrl, title, lead, category, difficultyLevel, description, whatYouWillLearn, price, videos, requirements, duration, owner,material } = req.body
 
     const mainTopicsArr = typeof whatYouWillLearn === 'string' ? whatYouWillLearn.split(',').map(elm => elm.charAt(0).toUpperCase() + elm.substring(1)) : whatYouWillLearn
